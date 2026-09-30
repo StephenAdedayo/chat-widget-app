@@ -13,6 +13,7 @@ export default function ChatWidget({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([{ role: "assistant", content: greeting }]);
+  const API_BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const [storedMessages] = useState(() => {
     try {
       const saved = localStorage.getItem("storedMessages");
@@ -53,7 +54,7 @@ export default function ChatWidget({
     setIsLoading(true);
 
     try {
-      const res = await fetch(apiEndpoint, {
+      const res = await fetch(`${API_BASE_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: nextMessages }),

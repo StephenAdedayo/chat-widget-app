@@ -98,3 +98,5 @@ app.listen(PORT, () => {
     console.warn("⚠️  OPENROUTER_API_KEY not set — /api/chat will return an error until it is.");
   }
 });
+
+export default app
